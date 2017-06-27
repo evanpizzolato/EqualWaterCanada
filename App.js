@@ -57,7 +57,7 @@ export default class Maps extends Component {
     )
   }
 }
-
+example
 const styles = StyleSheet.create({
   app: {
       flex: 1,
