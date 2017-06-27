@@ -1,41 +1,41 @@
-import React, { Component } from 'react'
+"use strict";
+
+import React, { Component } from 'react';
 import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  Image,
-  View,
-  ScrollView,
-  ListView
-} from 'react-native'
-import MapView from 'react-native-maps'
-import Data from './data/EqualWater.json'
+    Text,
+    Image,
+    View
+} from 'react-native';
+import MapView from 'react-native-maps';
 
-var ds
+var styles = require('./StyleSheet');
 
- export default class Reserves extends Component {
-   constructor(props) {
-     super(props)
-     this.state = {
-       data: []
-       }
-     }
-   }
+export default class Reps extends Component {
 
-   componentDidMount() {
-      fetch("./data/EqualWater.json")
-          .then( (response) => {
-              return response.json() })
-                  .then( (json) => {
-                      this.setState({data: json});
-                  });
-   }
+    constructor(props) {
+        super(props);
+        this.state = {
+            region: this.props.region,
+            data: require('../data/EqualWater.json'),
+        };
+    }
 
-   render() {
-     return (
-       <View>
-
-       </View>
-     )
-   }
- }
+    render() {
+        return (
+            <MapView style={{flex: 3, paddingBottom: 25}}
+                    initialRegion={this.state.region}
+                    onRegionChange={this.onRegionChange}>
+                {this.state.data.map( data => (
+                    <MapView.Marker
+                        coordinate={{
+                            latitude: data.lat,
+                            longitude:data.long
+                        }}
+                        title={data.name}
+                        key={data.id}
+                    />
+                ))}
+            </MapView>
+        );
+    }
+}
