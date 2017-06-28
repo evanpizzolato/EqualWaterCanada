@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 import MapView from 'react-native-maps';
 
+import MarkerInfo from './MarkerInfo';
+
 var styles = require('./StyleSheet');
 
 export default class Reps extends Component {
@@ -22,18 +24,20 @@ export default class Reps extends Component {
 
     render() {
         return (
-            <MapView style={{flex: 3, paddingBottom: 25}}
-                    initialRegion={this.state.region}
-                    onRegionChange={this.onRegionChange}>
+            <MapView
+                style={{flex:1}}
+                initialRegion={this.state.region} >
                 {this.state.data.map( data => (
                     <MapView.Marker
+                        key={data.id}
                         coordinate={{
                             latitude: data.lat,
-                            longitude:data.long
-                        }}
-                        title={data.name}
-                        key={data.id}
-                    />
+                            longitude: data.long,
+                        }}>
+                        <MapView.Callout>
+                            <MarkerInfo {...data} />
+                        </MapView.Callout>
+                    </MapView.Marker>
                 ))}
             </MapView>
         );
