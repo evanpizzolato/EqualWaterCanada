@@ -12,6 +12,7 @@ import {
 import Reps from './Reps';
 
 var styles = require('./StyleSheet');
+var moment = require('moment');
 
 export default class MarkerInfo extends Component {
     state = {
@@ -45,6 +46,8 @@ export default class MarkerInfo extends Component {
                         </View>
                 </Modal>
                 <Text>{this.props.name}</Text>
+                <Text>{this.props.system} : {this.props.advisory}</Text>
+                <Text>Advisory set on {moment(this.props.dateSet).format('MMM Do, YYYY')}</Text>
                 <Button
                     onPress={() => {
                         this.setModalVisible(true)

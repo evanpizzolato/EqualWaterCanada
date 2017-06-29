@@ -7,6 +7,7 @@ import {
     View,
     ListView
 } from 'react-native';
+import { StyleSheet } from 'react-native';
 import Autolink from 'react-native-autolink';
 
 var ds;
