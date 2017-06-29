@@ -7,6 +7,7 @@ import {
     View,
     ListView
 } from 'react-native';
+import Autolink from 'react-native-autolink';
 
 var ds;
 var styles = require('./StyleSheet');
@@ -56,6 +57,16 @@ export default class Reps extends Component {
                             <View>
                                 <Text style={[styles.h3, styles.textright]}>{rowData.name}</Text>
                                 <Text style={[styles.text, styles.textright]}>{rowData.elected_office}, {rowData.district_name}</Text>
+                                <Autolink
+                                    phone
+                                    text={rowData.offices[0].tel}
+                                    style={[styles.text, styles.textright]}
+                                />
+                                <Autolink
+                                    email
+                                    text={rowData.email}
+                                    style={[styles.text, styles.textright]}
+                                />
                             </View>
 
                         </View> }

@@ -30,7 +30,10 @@ export default class MarkerInfo extends Component {
                     transparent={true}
                     visible={this.state.modalVisible}
                     onRequestClose={() => {alert("Modal has been closed.")}}>
-                        <View style={{flex:1, backgroundColor: 'rgba(0,0,0,0.4)'}}></View>
+                        <View style={{flex:1, backgroundColor: 'rgba(0,0,0,0.4)'}}
+                            onPress={() => {
+                                this.setModalVisible(!this.state.modalVisible)
+                            }}></View>
                         <View style={{flex:1, backgroundColor: 'white'}}>
                             <Reps lat={this.props.lat} lon={this.props.long} />
 
