@@ -45,9 +45,9 @@ export default class MarkerInfo extends Component {
                                 title="Close" />
                         </View>
                 </Modal>
-                <Text>{this.props.name}</Text>
+                <Text style={[styles.h3, styles.textcenter]}>{this.props.name}</Text>
                 <Text>{this.props.system} : {this.props.advisory}</Text>
-                <Text>Advisory set on {moment(this.props.dateSet).format('MMM Do, YYYY')}</Text>
+                <Text>Advisory set {moment(this.props.dateSet).fromNow()}</Text>
                 <Button
                     onPress={() => {
                         this.setModalVisible(true)
